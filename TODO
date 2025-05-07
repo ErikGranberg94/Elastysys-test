@@ -1,1 +1,23 @@
-TODO
+TODO Create Kubernetes cluster
+Set up yml configuration file - Done
+Make application accessible from web browser
+
+
+TODO Containerise code
+Set up docker file - Done
+Fix issue that causes image to exit with 0 on startup
+Add image to registry
+
+
+Current state of solution:
+I'm running the cluster locally. The cluster itself seems to run fine. I created a similar, working setup while following the official Kubernetes tutorial, prior to this exam.
+The containerised image of the node app exits with zero on start up, which prevents the pods from ever becoming available. This also happens when I just run the image so I'm confident the docker image is the problem.
+
+
+Possible steps to make the solution production ready:
+Tinker with the amount of pods needed to meet demand (if the demand isn't constant then figure out an appropriate minimum and maximum value and have the cluster scale up or down as needed).
+Tinker with the amount of resources allocated for each pod, to prevent a pod from use too much.
+Configure each pod to run in different data centres, to ensure availability and reduce the risk of an outage.
+Encrypt communication. For example: use https instead of http.
+Allow only whitelisted IPs. This may not be possible depending on who's supposed to have access to the app. As little of the app as possible should be exposed to the internet.
+Identify if parts of the app can be made into smaller modules. This would allow the cluster to only scale certain parts of the app, instead of the entire thing. This may be something the company needs to do themselves.
